@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useT } from "@/i18n/LanguageProvider";
 import heroImg from "@/assets/navelli-hero.jpg";
 import saffronImg from "@/assets/saffron.jpg";
-import { Map, MapPin, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { Map, MapPin, ArrowRight, Sparkles, ChevronDown, ExternalLink, Building2, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -153,6 +153,60 @@ function HomePage() {
               <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Official links */}
+      <section className="max-w-7xl mx-auto px-4 pb-24">
+        <div className="text-center mb-8">
+          <span className="text-xs uppercase tracking-widest text-accent font-bold">
+            {t("links_title")}
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">{t("links_title")}</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-3">{t("links_intro")}</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          <a
+            href="https://comune.navelli.aq.it/home"
+            target="_blank"
+            rel="noreferrer"
+            className="stone-card rounded-2xl p-6 flex items-start gap-4 group hover:shadow-lg transition-shadow"
+          >
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-primary/15 text-primary shrink-0">
+              <Building2 className="w-6 h-6" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-accent font-bold">
+                comune.navelli.aq.it
+              </p>
+              <h3 className="font-display text-xl font-bold mt-1">{t("links_municipality")}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t("links_municipality_desc")}</p>
+              <span className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary font-semibold group-hover:gap-2.5 transition-all">
+                {t("links_visit")} <ExternalLink className="w-3.5 h-3.5" />
+              </span>
+            </div>
+          </a>
+
+          <a
+            href="https://visitnavelli.it/it_it/"
+            target="_blank"
+            rel="noreferrer"
+            className="stone-card rounded-2xl p-6 flex items-start gap-4 group hover:shadow-lg transition-shadow"
+          >
+            <span className="grid place-items-center w-12 h-12 rounded-full bg-accent/20 text-accent-foreground shrink-0">
+              <Compass className="w-6 h-6" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-accent font-bold">
+                visitnavelli.it
+              </p>
+              <h3 className="font-display text-xl font-bold mt-1">{t("links_proloco")}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t("links_proloco_desc")}</p>
+              <span className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary font-semibold group-hover:gap-2.5 transition-all">
+                {t("links_visit")} <ExternalLink className="w-3.5 h-3.5" />
+              </span>
+            </div>
+          </a>
         </div>
       </section>
     </>
