@@ -3,7 +3,8 @@ import { useT } from "@/i18n/LanguageProvider";
 import { getStop, stops, distanceMeters, FALLBACK_IMAGE } from "@/data/stops";
 import { LeafletMap } from "@/components/LeafletMap";
 import { CategoryIcon, categoryKey } from "@/components/CategoryIcon";
-import { ArrowLeft, ArrowRight, ChevronRight, Map, MapPin, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Map, MapPin, Share2, Car, AlertCircle } from "lucide-react";
+import { BookVisitButton } from "@/components/BookVisitButton";
 import { useState } from "react";
 
 export const Route = createFileRoute("/stop/$id")({
@@ -123,6 +124,29 @@ function StopPage() {
           <p className="text-foreground/90 leading-relaxed whitespace-pre-line">
             {tField(stop.fullDescription)}
           </p>
+
+          {(stop.visitTip || stop.requiresCar || stop.requiresBooking) && (
+            <div className="mt-6 rounded-2xl border-l-4 border-accent bg-accent/10 p-4 space-y-3">
+              <div className="flex items-center gap-2 text-sm font-display font-bold">
+                <AlertCircle className="w-4 h-4 text-accent" />
+                {t("visit_notes")}
+              </div>
+              {stop.requiresCar && (
+                <p className="text-sm flex items-start gap-2 text-foreground/90">
+                  <Car className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span><strong>{t("car_needed")}.</strong></span>
+                </p>
+              )}
+              {stop.visitTip && (
+                <p className="text-sm text-foreground/90 leading-relaxed">{tField(stop.visitTip)}</p>
+              )}
+              {stop.requiresBooking && (
+                <div className="pt-2">
+                  <BookVisitButton stopName={tField(stop.name)} />
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div>
           <div className="stone-card rounded-2xl p-5 text-sm">
