@@ -13,6 +13,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Borgo medievale d'Abruzzo, tra i più belli d'Italia, patria dello zafferano DOP. Vivi il tour digitale di Navelli e Civitaretenga." },
       { property: "og:image", content: heroImg },
     ],
+    links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" }
+    ],
   }),
 });
 
