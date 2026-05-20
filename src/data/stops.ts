@@ -99,6 +99,14 @@ export const stops: Stop[] = [
     images: local("madonna-rosario"),
     prevStopId: "piazza-san-pelino",
     nextStopId: "palazzo-de-roccis",
+    requiresBooking: true,
+    visitTip: {
+      it: "L'interno è normalmente chiuso: l'organo del 1702 e la tela di Damini si visitano solo su prenotazione tramite la Pro Loco di Navelli.",
+      en: "The interior is usually closed: the 1702 organ and the Damini canvas can only be seen by booking a guided visit through the Pro Loco di Navelli.",
+      fr: "L'intérieur est généralement fermé : l'orgue de 1702 et la toile de Damini se visitent uniquement sur réservation via la Pro Loco di Navelli.",
+      de: "Das Innere ist meist geschlossen: die Orgel von 1702 und das Damini-Gemälde sind nur nach Voranmeldung bei der Pro Loco di Navelli zu besichtigen.",
+      es: "El interior suele estar cerrado: el órgano de 1702 y el lienzo de Damini se visitan solo reservando con la Pro Loco di Navelli.",
+    },
   },
   {
     id: "palazzo-de-roccis",
@@ -192,6 +200,14 @@ export const stops: Stop[] = [
     images: local("cappella-san-pasquale"),
     prevStopId: "porta-santa-maria",
     nextStopId: "chiesa-san-sebastiano",
+    requiresBooking: true,
+    visitTip: {
+      it: "La cappella resta chiusa la maggior parte dell'anno: l'apertura per i visitatori si concorda con almeno 2 ore di preavviso con la Pro Loco.",
+      en: "The chapel is closed most of the year: opening for visitors is arranged with at least 2 hours' notice via the Pro Loco.",
+      fr: "La chapelle reste fermée la plupart de l'année : l'ouverture se convient avec au moins 2 heures de préavis auprès de la Pro Loco.",
+      de: "Die Kapelle ist die meiste Zeit geschlossen: eine Öffnung wird mit mindestens 2 Stunden Vorlauf bei der Pro Loco vereinbart.",
+      es: "La capilla está cerrada la mayor parte del año: la apertura se acuerda con al menos 2 horas de antelación con la Pro Loco.",
+    },
   },
   {
     id: "porta-castello",
@@ -254,6 +270,14 @@ export const stops: Stop[] = [
     images: local("chiesa-san-sebastiano"),
     prevStopId: "cappella-san-pasquale",
     nextStopId: "palazzo-santucci",
+    requiresBooking: true,
+    visitTip: {
+      it: "Chiesa parrocchiale principale: aperta solo per le funzioni religiose. Per visitare l'interno, il portale ligneo e la croce processionale del XIV secolo è necessario prenotare una visita guidata con almeno 2 ore di preavviso.",
+      en: "Main parish church: open only for services. To visit the interior, the carved wooden door and the 14th-century processional cross, you must book a guided tour with at least 2 hours' notice.",
+      fr: "Église paroissiale principale : ouverte uniquement pour les offices. Pour visiter l'intérieur il faut réserver une visite guidée avec au moins 2 heures de préavis.",
+      de: "Hauptpfarrkirche: nur zu Gottesdiensten geöffnet. Für eine Besichtigung des Inneren mit mindestens 2 Stunden Vorlauf eine Führung buchen.",
+      es: "Iglesia parroquial principal: abierta solo para los oficios. Para visitar el interior es necesario reservar visita guiada con al menos 2 horas de antelación.",
+    },
   },
   {
     id: "palazzo-santucci",
@@ -285,6 +309,14 @@ export const stops: Stop[] = [
     images: local("palazzo-santucci"),
     prevStopId: "chiesa-san-sebastiano",
     nextStopId: "porta-castello",
+    requiresBooking: true,
+    visitTip: {
+      it: "Il cortile rinascimentale e gli interni si visitano solo su prenotazione (eventi, mostre e matrimoni civili a parte). Contattare la Pro Loco con almeno 2 ore di preavviso.",
+      en: "The Renaissance courtyard and interiors can be visited only by appointment (apart from events, exhibitions and civil weddings). Contact the Pro Loco at least 2 hours in advance.",
+      fr: "La cour Renaissance et les intérieurs se visitent uniquement sur réservation. Contacter la Pro Loco au moins 2 heures à l'avance.",
+      de: "Renaissance-Innenhof und Innenräume nur nach Voranmeldung. Pro Loco mindestens 2 Stunden im Voraus kontaktieren.",
+      es: "El patio renacentista y los interiores se visitan solo con reserva. Contactar la Pro Loco con al menos 2 horas de antelación.",
+    },
   },
   {
     id: "porta-san-pelino",
