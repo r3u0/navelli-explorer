@@ -368,23 +368,66 @@ export const stops: Stop[] = [
       es: "Fin del recorrido a pie: regreso a la plaza para recoger el coche y continuar hacia Civitaretenga.",
     },
     fullDescription: {
-      it: "Il giro a piedi di Navelli si chiude tornando in Piazza San Pelino, da dove si è partiti. Qui i visitatori possono fermarsi per uno spuntino veloce o un drink al bar 'Sotto al Castagno' direttamente sulla piazza, oppure al vicino 'Il Grottino del Borgo'. Da qui è necessario riprendere l'auto per spostarsi verso Civitaretenga e proseguire con la seconda parte del tour: le due frazioni non sono collegate a piedi e la distanza richiede l'uso di un veicolo.",
-      en: "The Navelli walking loop ends back at Piazza San Pelino, where it began. Visitors can stop for a quick snack or a drink at the bar 'Sotto al Castagno' right on the square, or at the nearby 'Il Grottino del Borgo'. From here you must get back in your car to drive to Civitaretenga and continue with the second part of the tour: the two villages are not connected on foot and the distance between them requires a vehicle.",
-      fr: "La boucle à pied de Navelli se termine sur la Piazza San Pelino, point de départ. On peut faire une pause au bar 'Sotto al Castagno' sur la place ou au 'Il Grottino del Borgo' tout proche. Il faut ensuite reprendre la voiture pour rejoindre Civitaretenga : les deux villages ne sont pas reliés à pied.",
-      de: "Der Rundgang durch Navelli endet wieder an der Piazza San Pelino. Hier kann man im Café 'Sotto al Castagno' am Platz oder im nahen 'Il Grottino del Borgo' eine Pause machen. Für den zweiten Teil der Tour nach Civitaretenga benötigt man das Auto: die beiden Dörfer sind nicht zu Fuß verbunden.",
-      es: "El recorrido a pie por Navelli termina de nuevo en Piazza San Pelino. Los visitantes pueden hacer una pausa en el bar 'Sotto al Castagno' en la plaza o en el cercano 'Il Grottino del Borgo'. Desde aquí hay que coger el coche para llegar a Civitaretenga: los dos pueblos no están conectados a pie.",
+      it: "Il giro a piedi di Navelli si chiude tornando in Piazza San Pelino, da dove si è partiti. Qui i visitatori possono fermarsi per uno spuntino o un drink al bar 'Sotto al Castagno' sulla piazza, oppure al vicino 'Il Grottino del Borgo'. Da qui è necessario riprendere l'auto: la tappa successiva (n. 11 — Chiesa di Santa Maria in Cerulis, ~2,5 km) e poi Civitaretenga non sono raggiungibili a piedi.",
+      en: "The Navelli walking loop ends back at Piazza San Pelino, where it began. Stop for a snack or a drink at the bar 'Sotto al Castagno' on the square, or at nearby 'Il Grottino del Borgo'. From here you must get back in your car: the next stop (no. 11 — Church of Santa Maria in Cerulis, ~2.5 km) and then Civitaretenga cannot be reached on foot.",
+      fr: "La boucle à pied de Navelli se termine sur la Piazza San Pelino. Pause possible au bar 'Sotto al Castagno' sur la place ou au 'Il Grottino del Borgo' tout proche. Il faut ensuite reprendre la voiture : la prochaine étape (n° 11 — Santa Maria in Cerulis, ~2,5 km) puis Civitaretenga ne se rejoignent pas à pied.",
+      de: "Der Rundgang durch Navelli endet wieder an der Piazza San Pelino. Pause im Café 'Sotto al Castagno' am Platz oder im nahen 'Il Grottino del Borgo'. Danach mit dem Auto weiter: die nächste Station (Nr. 11 — Santa Maria in Cerulis, ~2,5 km) und Civitaretenga sind nicht zu Fuß erreichbar.",
+      es: "El recorrido a pie por Navelli termina en Piazza San Pelino. Pausa en el bar 'Sotto al Castagno' o en el cercano 'Il Grottino del Borgo'. Desde aquí hay que coger el coche: la siguiente parada (n.º 11 — Santa Maria in Cerulis, ~2,5 km) y Civitaretenga no son alcanzables a pie.",
     },
     category: "historic",
-    coordinates: { lat: 42.236473, lng: 13.730644 },
+    coordinates: { lat: 42.236511, lng: 13.730755 },
     images: local("piazza-san-pelino"),
     prevStopId: "porta-san-pelino",
+    nextStopId: "santa-maria-cerulis",
+  },
+
+  // ============ CIVITARETENGA ============
+  // ============ INTERMEDIATE STOP — by car ============
+  {
+    id: "santa-maria-cerulis",
+    stopNumber: 11,
+    area: "Cerulis",
+    name: {
+      it: "Chiesa di Santa Maria in Cerulis",
+      en: "Church of Santa Maria in Cerulis",
+      fr: "Église Santa Maria in Cerulis",
+      de: "Kirche Santa Maria in Cerulis",
+      es: "Iglesia de Santa Maria in Cerulis",
+    },
+    shortDescription: {
+      it: "Chiesa romanica isolata sull'altopiano, con affreschi del XIV–XV secolo. Si raggiunge in auto.",
+      en: "Romanesque church isolated on the plateau, with 14th–15th century frescoes. Reachable only by car.",
+      fr: "Église romane isolée sur le plateau, avec fresques du XIVe–XVe siècle. Accessible uniquement en voiture.",
+      de: "Romanische Kirche, isoliert auf der Hochebene, mit Fresken aus dem 14.–15. Jahrhundert. Nur mit dem Auto erreichbar.",
+      es: "Iglesia románica aislada en el altiplano, con frescos de los siglos XIV–XV. Accesible solo en coche.",
+    },
+    fullDescription: {
+      it: "La chiesa di Santa Maria in Cerulis sorge isolata sull'altopiano di Navelli, lungo l'antico tratturo. Edificata su un sito di culto preesistente (forse paleocristiano sopra resti italici), nella sua forma attuale risale al periodo romanico (XI–XII secolo) con rimaneggiamenti successivi. L'interno conserva un prezioso ciclo di affreschi tre-quattrocenteschi e un'iconografia mariana che la rendono una delle chiese rurali più importanti dell'aquilano. Si raggiunge in auto da Piazza San Pelino in pochi minuti (~2,5 km lungo la SS17), e da qui — sempre in auto — si prosegue verso Civitaretenga (~2 km).",
+      en: "The church of Santa Maria in Cerulis stands isolated on the Navelli plateau, along the ancient sheep-trail. Built on a pre-existing place of worship (probably early-Christian over Italic remains), in its current form it dates to the Romanesque period (11th–12th c.) with later additions. The interior preserves a precious cycle of 14th–15th-century frescoes and Marian iconography that make it one of the most important rural churches of the L'Aquila area. It is reached by car from Piazza San Pelino in a few minutes (~2.5 km along the SS17); from here you continue — again by car — to Civitaretenga (~2 km).",
+      fr: "L'église Santa Maria in Cerulis se dresse isolée sur le plateau de Navelli, le long de l'ancien tratturo. Bâtie sur un lieu de culte préexistant, dans sa forme actuelle elle remonte à la période romane (XIe–XIIe s.) avec des remaniements ultérieurs. L'intérieur conserve un cycle de fresques des XIVe–XVe siècles. On y accède en voiture depuis la Piazza San Pelino (~2,5 km par la SS17) ; d'ici on continue, toujours en voiture, vers Civitaretenga (~2 km).",
+      de: "Die Kirche Santa Maria in Cerulis steht isoliert auf der Hochebene von Navelli, am alten Tratturo. In ihrer heutigen Form stammt sie aus der Romanik (11.–12. Jh.) mit späteren Umbauten. Im Inneren ein wertvoller Freskenzyklus aus dem 14.–15. Jahrhundert. Erreichbar nur mit dem Auto ab Piazza San Pelino (~2,5 km über die SS17); von hier geht es — ebenfalls mit dem Auto — weiter nach Civitaretenga (~2 km).",
+      es: "La iglesia de Santa Maria in Cerulis se alza aislada en el altiplano de Navelli, a lo largo del antiguo tratturo. En su forma actual data del románico (s. XI–XII) con reformas posteriores. El interior conserva un valioso ciclo de frescos de los siglos XIV–XV. Se llega en coche desde Piazza San Pelino (~2,5 km por la SS17); desde aquí se continúa, también en coche, hacia Civitaretenga (~2 km).",
+    },
+    visitTip: {
+      it: "Questa tappa non è raggiungibile a piedi: serve l'auto sia per arrivare sia per proseguire verso Civitaretenga. La chiesa è normalmente chiusa: per visitare l'interno e gli affreschi è necessario prenotare con almeno 2 ore di preavviso tramite la Pro Loco.",
+      en: "This stop is not reachable on foot: a car is needed both to get here and to continue on to Civitaretenga. The church is normally closed: to see the interior and the frescoes you must book at least 2 hours in advance with the Pro Loco.",
+      fr: "Cette étape n'est pas accessible à pied : la voiture est indispensable, aussi bien pour arriver que pour continuer vers Civitaretenga. L'église est normalement fermée : réservation avec 2 heures de préavis auprès de la Pro Loco.",
+      de: "Diese Station ist nicht zu Fuß erreichbar: ein Auto ist sowohl für die Anfahrt als auch für die Weiterfahrt nach Civitaretenga nötig. Die Kirche ist normalerweise geschlossen: Besichtigung nur nach Voranmeldung mit mindestens 2 Stunden Vorlauf bei der Pro Loco.",
+      es: "Esta parada no es accesible a pie: se necesita coche tanto para llegar como para continuar hacia Civitaretenga. La iglesia está normalmente cerrada: reserva con 2 horas de antelación con la Pro Loco.",
+    },
+    category: "church",
+    coordinates: { lat: 42.239364, lng: 13.717407 },
+    images: local("santa-maria-cerulis"),
+    prevStopId: "piazza-san-pelino-return",
     nextStopId: "monastero-sant-antonio",
+    requiresBooking: true,
+    requiresCar: true,
   },
 
   // ============ CIVITARETENGA ============
   {
     id: "monastero-sant-antonio",
-    stopNumber: 11,
+    stopNumber: 12,
     area: "Civitaretenga",
     name: {
       it: "Monastero di Sant'Antonio & Chiesa Rinascimentale",
@@ -410,12 +453,20 @@ export const stops: Stop[] = [
     category: "historic",
     coordinates: { lat: 42.246124, lng: 13.709838 },
     images: local("monastero-sant-antonio"),
-    prevStopId: "piazza-san-pelino-return",
+    prevStopId: "santa-maria-cerulis",
     nextStopId: "chiesa-sant-egidio",
+    requiresBooking: true,
+    visitTip: {
+      it: "Il chiostro duecentesco e la chiesa rinascimentale del 1489 sono visitabili previa prenotazione (preavviso di almeno 2 ore). Il complesso ospita anche una foresteria/ostello.",
+      en: "The 13th-century cloister and the 1489 Renaissance church can be visited by booking ahead (at least 2 hours' notice). The complex also hosts a hostel/guesthouse.",
+      fr: "Le cloître du XIIIe siècle et l'église Renaissance de 1489 se visitent sur réservation (préavis d'au moins 2 heures).",
+      de: "Der Kreuzgang aus dem 13. Jh. und die Renaissance-Kirche von 1489 sind nach Voranmeldung (mindestens 2 Stunden) zugänglich.",
+      es: "El claustro del s. XIII y la iglesia renacentista de 1489 se visitan con reserva previa (al menos 2 horas de antelación).",
+    },
   },
   {
     id: "chiesa-sant-egidio",
-    stopNumber: 12,
+    stopNumber: 13,
     area: "Civitaretenga",
     name: {
       it: "Chiesa di Sant'Egidio (XII sec.)",
@@ -443,10 +494,18 @@ export const stops: Stop[] = [
     images: local("chiesa-sant-egidio"),
     prevStopId: "monastero-sant-antonio",
     nextStopId: "ghetto-ebraico",
+    requiresBooking: true,
+    visitTip: {
+      it: "Chiesa romanica abruzzese normalmente chiusa: per visitarla all'interno serve una prenotazione con almeno 2 ore di preavviso.",
+      en: "Abruzzo Romanesque church, normally closed: a booking with at least 2 hours' notice is required to see the interior.",
+      fr: "Église romane des Abruzzes normalement fermée : réservation avec 2 heures de préavis pour l'intérieur.",
+      de: "Romanische Kirche der Abruzzen, meist geschlossen: Innenbesichtigung nur mit Voranmeldung (mindestens 2 Stunden).",
+      es: "Iglesia románica abruzzesa normalmente cerrada: reserva con 2 horas de antelación para visitar el interior.",
+    },
   },
   {
     id: "ghetto-ebraico",
-    stopNumber: 13,
+    stopNumber: 14,
     area: "Civitaretenga",
     name: {
       it: "Il Ghetto Ebraico — Via Giudea",
@@ -477,7 +536,7 @@ export const stops: Stop[] = [
   },
   {
     id: "chiesa-san-salvatore",
-    stopNumber: 14,
+    stopNumber: 15,
     area: "Civitaretenga",
     name: {
       it: "Chiesa di San Salvatore (XII sec.)",
@@ -505,10 +564,18 @@ export const stops: Stop[] = [
     images: local("chiesa-san-salvatore"),
     prevStopId: "ghetto-ebraico",
     nextStopId: "torre-civitaretenga",
+    requiresBooking: true,
+    visitTip: {
+      it: "Chiesa parrocchiale principale di Civitaretenga: aperta durante le funzioni religiose. Per visite guidate dell'interno e degli arredi sacri prenotare con almeno 2 ore di preavviso.",
+      en: "Main parish church of Civitaretenga: open during services. For guided visits of the interior and sacred furnishings book at least 2 hours in advance.",
+      fr: "Église paroissiale principale de Civitaretenga : ouverte pendant les offices. Visites guidées sur réservation (2 heures de préavis).",
+      de: "Hauptpfarrkirche von Civitaretenga: zu Gottesdiensten geöffnet. Führungen nach Voranmeldung (mindestens 2 Stunden).",
+      es: "Iglesia parroquial principal de Civitaretenga: abierta durante los oficios. Visitas guiadas con reserva (2 horas de antelación).",
+    },
   },
   {
     id: "torre-civitaretenga",
-    stopNumber: 15,
+    stopNumber: 16,
     area: "Civitaretenga",
     name: {
       it: "Torre Quadra Medievale (Zona Torre)",
@@ -535,6 +602,14 @@ export const stops: Stop[] = [
     coordinates: { lat: 42.244414, lng: 13.704398 },
     images: local("torre-civitaretenga"),
     prevStopId: "chiesa-san-salvatore",
+    requiresBooking: true,
+    visitTip: {
+      it: "L'esterno è visitabile liberamente, ma l'accesso all'interno della torre è regolamentato e va concordato con la Pro Loco con almeno 2 ore di preavviso.",
+      en: "The exterior is freely visitable, but access inside the tower is regulated and must be arranged with the Pro Loco at least 2 hours in advance.",
+      fr: "L'extérieur est libre, mais l'accès à l'intérieur de la tour se réserve auprès de la Pro Loco (2 heures de préavis).",
+      de: "Außen frei zugänglich, der Innenraum nur nach Voranmeldung bei der Pro Loco (mindestens 2 Stunden).",
+      es: "El exterior es de libre acceso, pero la visita al interior de la torre debe reservarse con la Pro Loco (2 horas de antelación).",
+    },
   },
 ];
 
