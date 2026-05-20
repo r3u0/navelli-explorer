@@ -76,8 +76,8 @@ export const events: NavelliEvent[] = [
       de: "Kichererbsen- und Safranfest",
       es: "Fiesta del Garbanzo y del Azafrán",
     },
-    date: `${year}-08-19`,
-    endDate: `${year}-08-20`,
+    date: `${year}-`,
+    endDate: `${year}-`,
     location: "Navelli",
     category: "sagra",
     description: {
@@ -97,7 +97,7 @@ export const events: NavelliEvent[] = [
       de: "Madonna dell'Arco und Zwiebelmarkt",
       es: "Madonna dell'Arco y Feria de la Cebolla",
     },
-    date: `${year}-09-14`,
+    date: `${year}-`,
     location: "Civitaretenga",
     category: "religious",
     description: {
