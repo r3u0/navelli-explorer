@@ -79,7 +79,7 @@ export const translations = T({
 
   // Tour
   tour_title: { it: "Tour guidato del borgo", en: "Guided village tour", fr: "Visite guidée du village", de: "Geführter Dorfrundgang", es: "Recorrido guiado del pueblo" },
-  tour_subtitle: { it: "15 tappe tra Navelli e Civitaretenga", en: "15 stops across Navelli and Civitaretenga", fr: "15 étapes entre Navelli et Civitaretenga", de: "15 Stationen in Navelli und Civitaretenga", es: "15 paradas entre Navelli y Civitaretenga" },
+  tour_subtitle: { it: "16 tappe tra Navelli, l'altopiano e Civitaretenga", en: "16 stops across Navelli, the plateau and Civitaretenga", fr: "16 étapes entre Navelli, le plateau et Civitaretenga", de: "16 Stationen in Navelli, der Hochebene und Civitaretenga", es: "16 paradas entre Navelli, el altiplano y Civitaretenga" },
   tour_duration: { it: "Il percorso completo richiede circa 2–3 ore a piedi", en: "The full route takes approximately 2–3 hours on foot", fr: "Le parcours complet dure environ 2 à 3 heures à pied", de: "Der gesamte Rundgang dauert etwa 2–3 Stunden zu Fuß", es: "El recorrido completo dura aproximadamente 2–3 horas a pie" },
   car_required_title: {
     it: "Serve l'auto tra Navelli e Civitaretenga",
@@ -89,12 +89,71 @@ export const translations = T({
     es: "Se necesita coche entre Navelli y Civitaretenga",
   },
   car_required_desc: {
-    it: "Il tour si svolge in due parti. Prima si fa il giro a piedi di Navelli (tappe 1–10) partendo e tornando in Piazza San Pelino. Da lì si riprende l'auto per spostarsi a Civitaretenga (tappe 11–15): le due frazioni non sono collegate a piedi e non è possibile camminare tra i due borghi.",
-    en: "The tour has two parts. First, walk the Navelli loop (stops 1–10) starting and ending at Piazza San Pelino. From there pick up your car and drive to Civitaretenga (stops 11–15): the two villages are not connected on foot and you cannot walk between them.",
-    fr: "Le tour se déroule en deux parties. D'abord la boucle à pied de Navelli (étapes 1–10) au départ et au retour de la Piazza San Pelino. Reprenez ensuite votre voiture pour Civitaretenga (étapes 11–15) : les deux villages ne sont pas reliés à pied.",
-    de: "Die Tour besteht aus zwei Teilen. Zuerst der Rundgang durch Navelli (Stationen 1–10) ab/an Piazza San Pelino. Dann mit dem Auto weiter nach Civitaretenga (Stationen 11–15): die beiden Dörfer sind nicht zu Fuß verbunden.",
-    es: "El tour tiene dos partes. Primero el recorrido a pie por Navelli (paradas 1–10) saliendo y volviendo a Piazza San Pelino. Después se coge el coche hasta Civitaretenga (paradas 11–15): los dos pueblos no están conectados a pie.",
+    it: "Il tour si svolge in tre parti. Prima si fa il giro a piedi di Navelli (tappe 1–10) partendo e tornando in Piazza San Pelino. Da lì si riprende l'auto per la Chiesa di Santa Maria in Cerulis (tappa 11, ~2,5 km), poi si prosegue sempre in auto verso Civitaretenga (tappe 12–16, ~2 km). Le tappe 11–16 non sono raggiungibili a piedi.",
+    en: "The tour has three parts. First, walk the Navelli loop (stops 1–10) starting and ending at Piazza San Pelino. From there drive to the Church of Santa Maria in Cerulis (stop 11, ~2.5 km), and then continue by car to Civitaretenga (stops 12–16, ~2 km). Stops 11–16 cannot be reached on foot.",
+    fr: "Le tour se déroule en trois parties. D'abord la boucle à pied de Navelli (étapes 1–10). Puis en voiture vers Santa Maria in Cerulis (étape 11, ~2,5 km), et toujours en voiture vers Civitaretenga (étapes 12–16, ~2 km). Les étapes 11–16 ne sont pas accessibles à pied.",
+    de: "Die Tour besteht aus drei Teilen. Zuerst der Rundgang durch Navelli (Stationen 1–10). Dann mit dem Auto nach Santa Maria in Cerulis (Station 11, ~2,5 km) und weiter nach Civitaretenga (Stationen 12–16, ~2 km). Die Stationen 11–16 sind nicht zu Fuß erreichbar.",
+    es: "El tour tiene tres partes. Primero el recorrido a pie por Navelli (paradas 1–10). Luego en coche hasta Santa Maria in Cerulis (parada 11, ~2,5 km), y en coche hasta Civitaretenga (paradas 12–16, ~2 km). Las paradas 11–16 no son accesibles a pie.",
   },
+
+  // Booking
+  book_visit: { it: "Prenota la visita", en: "Book visit now", fr: "Réserver la visite", de: "Besuch buchen", es: "Reservar visita" },
+  booking_required_title: {
+    it: "Visita su prenotazione",
+    en: "Visit by appointment only",
+    fr: "Visite sur réservation",
+    de: "Besuch nur nach Voranmeldung",
+    es: "Visita con reserva",
+  },
+  booking_required_desc: {
+    it: "La maggior parte delle chiese e dei monumenti del borgo è normalmente chiusa. Per visitare gli interni è necessario prenotare una visita guidata con la Pro Loco di Navelli con almeno 2 ore di preavviso.",
+    en: "Most churches and monuments in the village are normally closed. To visit their interiors you must book a guided tour with the Pro Loco di Navelli at least 2 hours in advance.",
+    fr: "La plupart des églises et monuments du village sont normalement fermés. Pour visiter les intérieurs il faut réserver une visite guidée auprès de la Pro Loco di Navelli avec au moins 2 heures de préavis.",
+    de: "Die meisten Kirchen und Denkmäler im Dorf sind normalerweise geschlossen. Für eine Innenbesichtigung muss bei der Pro Loco di Navelli mit mindestens 2 Stunden Vorlauf eine Führung gebucht werden.",
+    es: "La mayoría de las iglesias y monumentos del pueblo están normalmente cerrados. Para visitar los interiores hay que reservar una visita guiada con la Pro Loco di Navelli al menos 2 horas antes.",
+  },
+  booking_choose: { it: "Scegli come prenotare:", en: "Choose how to book:", fr: "Choisissez comment réserver :", de: "Wählen Sie, wie Sie buchen möchten:", es: "Elige cómo reservar:" },
+  booking_whatsapp: { it: "WhatsApp", en: "WhatsApp", fr: "WhatsApp", de: "WhatsApp", es: "WhatsApp" },
+  booking_email: { it: "Email", en: "Email", fr: "E-mail", de: "E-Mail", es: "Correo" },
+  booking_phone: { it: "Telefono fisso", en: "Landline", fr: "Téléphone fixe", de: "Festnetz", es: "Teléfono fijo" },
+  booking_notice: {
+    it: "Si prega di prenotare con almeno 2 ore di anticipo.",
+    en: "Please book with at least 2 hours' notice.",
+    fr: "Merci de réserver avec au moins 2 heures de préavis.",
+    de: "Bitte mindestens 2 Stunden im Voraus buchen.",
+    es: "Por favor reserve con al menos 2 horas de antelación.",
+  },
+
+  // Visit notice
+  visit_notes: { it: "Note per la visita", en: "Visit notes", fr: "Notes pour la visite", de: "Hinweise zum Besuch", es: "Notas para la visita" },
+  car_needed: { it: "Serve l'auto", en: "Car needed", fr: "Voiture nécessaire", de: "Auto nötig", es: "Se necesita coche" },
+
+  // Official links section (home)
+  links_title: { it: "Link ufficiali", en: "Official links", fr: "Liens officiels", de: "Offizielle Links", es: "Enlaces oficiales" },
+  links_intro: {
+    it: "Per informazioni amministrative, eventi e iniziative turistiche, visita i siti ufficiali del Comune di Navelli e della Pro Loco.",
+    en: "For administrative information, events and tourist initiatives, visit the official websites of the Municipality of Navelli and the Pro Loco.",
+    fr: "Pour les informations administratives, les événements et les initiatives touristiques, visitez les sites officiels de la Mairie de Navelli et de la Pro Loco.",
+    de: "Für Verwaltungsinformationen, Veranstaltungen und touristische Initiativen besuchen Sie die offiziellen Webseiten der Gemeinde Navelli und der Pro Loco.",
+    es: "Para información administrativa, eventos e iniciativas turísticas, visite las webs oficiales del Ayuntamiento de Navelli y de la Pro Loco.",
+  },
+  links_municipality: { it: "Comune di Navelli", en: "Municipality of Navelli", fr: "Mairie de Navelli", de: "Gemeinde Navelli", es: "Ayuntamiento de Navelli" },
+  links_municipality_desc: {
+    it: "Sito istituzionale del Comune: avvisi, uffici, atti e contatti.",
+    en: "Institutional website of the Municipality: notices, offices, deeds and contacts.",
+    fr: "Site institutionnel de la Mairie : annonces, services, actes et contacts.",
+    de: "Offizielle Webseite der Gemeinde: Bekanntmachungen, Ämter, Urkunden und Kontakte.",
+    es: "Sitio institucional del Ayuntamiento: avisos, oficinas, actos y contactos.",
+  },
+  links_proloco: { it: "Pro Loco di Navelli", en: "Pro Loco of Navelli", fr: "Pro Loco de Navelli", de: "Pro Loco von Navelli", es: "Pro Loco de Navelli" },
+  links_proloco_desc: {
+    it: "Visit Navelli: visite guidate, eventi, prenotazioni e informazioni turistiche.",
+    en: "Visit Navelli: guided tours, events, bookings and tourist information.",
+    fr: "Visit Navelli : visites guidées, événements, réservations et informations touristiques.",
+    de: "Visit Navelli: Führungen, Veranstaltungen, Reservierungen und Touristeninformationen.",
+    es: "Visit Navelli: visitas guiadas, eventos, reservas e información turística.",
+  },
+  links_visit: { it: "Visita il sito", en: "Visit the site", fr: "Visiter le site", de: "Webseite besuchen", es: "Visitar el sitio" },
 
   // Stops
   stops_title: { it: "Punti d'interesse", en: "Points of Interest", fr: "Points d'intérêt", de: "Sehenswürdigkeiten", es: "Puntos de interés" },
