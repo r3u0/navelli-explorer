@@ -9,38 +9,228 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TourRouteImport } from './routes/tour'
+import { Route as StopsRouteImport } from './routes/stops'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as HospitalityRouteImport } from './routes/hospitality'
+import { Route as GettingHereRouteImport } from './routes/getting-here'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StopIdRouteImport } from './routes/stop.$id'
+import { Route as AdminQrRouteImport } from './routes/admin.qr'
 
+const TourRoute = TourRouteImport.update({
+  id: '/tour',
+  path: '/tour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StopsRoute = StopsRouteImport.update({
+  id: '/stops',
+  path: '/stops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HospitalityRoute = HospitalityRouteImport.update({
+  id: '/hospitality',
+  path: '/hospitality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GettingHereRoute = GettingHereRouteImport.update({
+  id: '/getting-here',
+  path: '/getting-here',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StopIdRoute = StopIdRouteImport.update({
+  id: '/stop/$id',
+  path: '/stop/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminQrRoute = AdminQrRouteImport.update({
+  id: '/admin/qr',
+  path: '/admin/qr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/getting-here': typeof GettingHereRoute
+  '/hospitality': typeof HospitalityRoute
+  '/map': typeof MapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stops': typeof StopsRoute
+  '/tour': typeof TourRoute
+  '/admin/qr': typeof AdminQrRoute
+  '/stop/$id': typeof StopIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/getting-here': typeof GettingHereRoute
+  '/hospitality': typeof HospitalityRoute
+  '/map': typeof MapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stops': typeof StopsRoute
+  '/tour': typeof TourRoute
+  '/admin/qr': typeof AdminQrRoute
+  '/stop/$id': typeof StopIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/getting-here': typeof GettingHereRoute
+  '/hospitality': typeof HospitalityRoute
+  '/map': typeof MapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stops': typeof StopsRoute
+  '/tour': typeof TourRoute
+  '/admin/qr': typeof AdminQrRoute
+  '/stop/$id': typeof StopIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/events'
+    | '/food'
+    | '/getting-here'
+    | '/hospitality'
+    | '/map'
+    | '/sitemap.xml'
+    | '/stops'
+    | '/tour'
+    | '/admin/qr'
+    | '/stop/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/events'
+    | '/food'
+    | '/getting-here'
+    | '/hospitality'
+    | '/map'
+    | '/sitemap.xml'
+    | '/stops'
+    | '/tour'
+    | '/admin/qr'
+    | '/stop/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/events'
+    | '/food'
+    | '/getting-here'
+    | '/hospitality'
+    | '/map'
+    | '/sitemap.xml'
+    | '/stops'
+    | '/tour'
+    | '/admin/qr'
+    | '/stop/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EventsRoute: typeof EventsRoute
+  FoodRoute: typeof FoodRoute
+  GettingHereRoute: typeof GettingHereRoute
+  HospitalityRoute: typeof HospitalityRoute
+  MapRoute: typeof MapRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StopsRoute: typeof StopsRoute
+  TourRoute: typeof TourRoute
+  AdminQrRoute: typeof AdminQrRoute
+  StopIdRoute: typeof StopIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tour': {
+      id: '/tour'
+      path: '/tour'
+      fullPath: '/tour'
+      preLoaderRoute: typeof TourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stops': {
+      id: '/stops'
+      path: '/stops'
+      fullPath: '/stops'
+      preLoaderRoute: typeof StopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hospitality': {
+      id: '/hospitality'
+      path: '/hospitality'
+      fullPath: '/hospitality'
+      preLoaderRoute: typeof HospitalityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/getting-here': {
+      id: '/getting-here'
+      path: '/getting-here'
+      fullPath: '/getting-here'
+      preLoaderRoute: typeof GettingHereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +238,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stop/$id': {
+      id: '/stop/$id'
+      path: '/stop/$id'
+      fullPath: '/stop/$id'
+      preLoaderRoute: typeof StopIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/qr': {
+      id: '/admin/qr'
+      path: '/admin/qr'
+      fullPath: '/admin/qr'
+      preLoaderRoute: typeof AdminQrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EventsRoute: EventsRoute,
+  FoodRoute: FoodRoute,
+  GettingHereRoute: GettingHereRoute,
+  HospitalityRoute: HospitalityRoute,
+  MapRoute: MapRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StopsRoute: StopsRoute,
+  TourRoute: TourRoute,
+  AdminQrRoute: AdminQrRoute,
+  StopIdRoute: StopIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
