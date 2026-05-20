@@ -28,7 +28,7 @@ function TourPage() {
         <p className="text-muted-foreground text-lg">{t("tour_subtitle")}</p>
         <div className="flex flex-wrap gap-4 mt-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> {t("tour_duration")}</span>
-          <span className="flex items-center gap-1.5"><Footprints className="w-4 h-4 text-primary" /> 15 {t("nav_stops").toLowerCase()}</span>
+          <span className="flex items-center gap-1.5"><Footprints className="w-4 h-4 text-primary" /> 16 {t("nav_stops").toLowerCase()}</span>
         </div>
       </div>
 
