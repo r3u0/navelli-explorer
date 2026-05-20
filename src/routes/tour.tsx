@@ -10,8 +10,8 @@ export const Route = createFileRoute("/tour")({
   component: TourPage,
   head: () => ({
     meta: [
-      { title: "Tour guidato di Navelli — 15 tappe tra borgo e zafferano" },
-      { name: "description", content: "Percorso guidato di 15 tappe tra Navelli e Civitaretenga: porte medievali, chiese, palazzi e i campi di zafferano DOP." },
+      { title: "Tour guidato di Navelli — 16 tappe tra borgo, altopiano e zafferano" },
+      { name: "description", content: "Percorso guidato di 16 tappe tra Navelli, Santa Maria in Cerulis e Civitaretenga: porte medievali, chiese, palazzi e i campi di zafferano DOP." },
     ],
   }),
 });
