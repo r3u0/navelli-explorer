@@ -9,13 +9,19 @@ import type { Multilang } from "./translations";
 
 export type StopCategory = "gate" | "church" | "palace" | "nature" | "monument" | "historic";
 
+export type StopArea = "Navelli" | "Civitaretenga" | "Cerulis";
+
 export interface Stop {
   id: string;
   stopNumber: number;
-  area: "Navelli" | "Civitaretenga";
+  area: StopArea;
   name: Multilang;
   shortDescription: Multilang;
   fullDescription: Multilang;
+  details?: Multilang;
+  visitTip?: Multilang;
+  requiresBooking?: boolean;
+  requiresCar?: boolean;
   category: StopCategory;
   coordinates: { lat: number; lng: number };
   images: string[];
