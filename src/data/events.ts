@@ -11,7 +11,7 @@
 
 import type { Multilang } from "./translations";
 
-export type EventCategory = "sagra" | "religious" | "cultural" | "music" | "nature";
+export type EventCategory = "sagra" | "religious" | "cultural" | "music" | "nature" | "arte";
 
 export interface NavelliEvent {
   id: string;

@@ -148,9 +148,40 @@ function StopPage() {
             </div>
           )}
         </div>
+        {/* Mobile-only Prev/Next: after description/booking note, before Info & map. Next on top. */}
+        <div className="md:hidden grid grid-cols-1 gap-3">
+          {next && (
+            <Link
+              to="/stop/$id"
+              params={{ id: next.id }}
+              className="stone-card rounded-2xl p-5 flex items-center gap-4 group"
+            >
+              <div className="flex-1 min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">{t("next_stop")}</p>
+                <p className="font-display font-bold truncate">{tField(next.name)}</p>
+                <p className="text-xs text-muted-foreground">{formatDist(distTo(next))} · {t("walking_distance")}</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-primary shrink-0" />
+            </Link>
+          )}
+          {prev && (
+            <Link
+              to="/stop/$id"
+              params={{ id: prev.id }}
+              className="stone-card rounded-2xl p-5 flex items-center gap-4 group"
+            >
+              <ArrowLeft className="w-5 h-5 text-primary shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">{t("prev_stop")}</p>
+                <p className="font-display font-bold truncate">{tField(prev.name)}</p>
+                <p className="text-xs text-muted-foreground">{formatDist(distTo(prev))} · {t("walking_distance")}</p>
+              </div>
+            </Link>
+          )}
+        </div>
         <div>
           <div className="stone-card rounded-2xl p-5 text-sm">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-2">Info</p>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-2">Posizione</p>
             <p className="flex items-center gap-2 mb-2">
               <MapPin className="w-4 h-4 text-primary" />
               {stop.coordinates.lat.toFixed(4)}°N, {stop.coordinates.lng.toFixed(4)}°E
@@ -167,13 +198,8 @@ function StopPage() {
         </div>
       </div>
 
-      {/* Mini map */}
-      <div className="mb-10">
-        <LeafletMap stops={stops} focusStopId={stop.id} height="40vh" zoom={17} showUserLocation />
-      </div>
-
-      {/* Prev / Next */}
-      <div className="grid sm:grid-cols-2 gap-4 mb-6">
+      {/* Desktop-only Prev / Next (sopra la mappa) */}
+      <div className="hidden md:grid sm:grid-cols-2 gap-4 mb-6">
         {prev ? (
           <Link
             to="/stop/$id"
@@ -203,6 +229,13 @@ function StopPage() {
           </Link>
         ) : <div />}
       </div>
+
+
+      {/* Mini map */}
+      <div className="mb-10">
+        <LeafletMap stops={stops} focusStopId={stop.id} height="40vh" zoom={17} showUserLocation />
+      </div>
+
 
       <Link
         to="/map"

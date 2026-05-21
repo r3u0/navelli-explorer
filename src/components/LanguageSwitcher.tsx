@@ -17,6 +17,11 @@ export function LanguageSwitcher() {
 
   const current = LANGS.find((l) => l.code === lang)!;
 
+  // Mappa codice lingua -> codice paese ISO per bandiere SVG (flagcdn.com)
+  const countryCode = (code: string) => (code === "en" ? "gb" : code);
+  const flagUrl = (code: string, size: 40 | 80 = 40) =>
+    `https://flagcdn.com/w${size}/${countryCode(code)}.png`;
+
   return (
     <div className="relative" ref={ref}>
       <button
@@ -24,7 +29,13 @@ export function LanguageSwitcher() {
         className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium hover:border-accent transition-colors"
         aria-label="Change language"
       >
-        <span className="text-base">{current.flag}</span>
+        <img
+          src={flagUrl(current.code)}
+          alt={current.label}
+          width={20}
+          height={14}
+          className="w-5 h-[14px] object-cover rounded-[2px] border border-border/60"
+        />
         <span className="hidden sm:inline uppercase tracking-wider text-xs">{current.code}</span>
       </button>
       {open && (
@@ -40,7 +51,13 @@ export function LanguageSwitcher() {
                 l.code === lang ? "bg-secondary font-semibold" : ""
               }`}
             >
-              <span className="text-lg">{l.flag}</span>
+              <img
+                src={flagUrl(l.code, 80)}
+                alt={l.label}
+                width={24}
+                height={16}
+                className="w-6 h-4 object-cover rounded-[2px] border border-border/60 shrink-0"
+              />
               <span>{l.label}</span>
             </button>
           ))}

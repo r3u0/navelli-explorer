@@ -15,17 +15,28 @@ export const Route = createFileRoute("/events")({
 });
 
 const catEmoji: Record<EventCategory, string> = {
-  sagra: "🍝", religious: "⛪", cultural: "🎭", music: "🎵", nature: "🌺",
+  sagra: "🍝", religious: "⛪", cultural: "🎭", music: "🎵", nature: "🌺", arte: "🎨",
 };
 
 function EventsPage() {
   const { t, tField, lang } = useT();
   const [filter, setFilter] = useState<EventCategory | "all">("all");
 
+  const cutoff = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() - 30);
+    return d.toISOString().slice(0, 10);
+  }, []);
+
+  const visibleEvents = useMemo(
+    () => events.filter((e) => (e.endDate || e.date) >= cutoff),
+    [cutoff]
+  );
+
   const filtered = useMemo(() => {
-    const f = filter === "all" ? events : events.filter((e) => e.category === filter);
+    const f = filter === "all" ? visibleEvents : visibleEvents.filter((e) => e.category === filter);
     return [...f].sort((a, b) => a.date.localeCompare(b.date));
-  }, [filter]);
+  }, [filter, visibleEvents]);
 
   const today = new Date().toISOString().slice(0, 10);
   const upcoming = filtered.filter((e) => (e.endDate || e.date) >= today);
@@ -39,10 +50,11 @@ function EventsPage() {
     return `${a} → ${b}`;
   };
 
-  const cats: (EventCategory | "all")[] = ["all", "sagra", "religious", "cultural", "music", "nature"];
+  const cats: (EventCategory | "all")[] = ["all", "sagra", "religious", "cultural", "music", "nature", "arte"];
   const catLabel = (c: EventCategory | "all") => {
     if (c === "all") return t("events_all");
     if (c === "nature") return t("cat_nature_ev");
+    if (c === "arte") return t("cat_arte_ev");
     return t(`cat_${c}` as never);
   };
 

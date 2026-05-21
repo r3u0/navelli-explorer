@@ -2,6 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { QrCode } from "lucide-react";
 
 export function MobileQRFab() {
+  // Controlliamo se siamo nel browser e se l'URL attuale contiene la parola "admin=true"
+  const isAdmin = typeof window !== "undefined" && window.location.search.includes("admin=true");
+
+  // Se NON sei l'amministratore, non mostrare assolutamente nulla
+  if (!isAdmin) return null;
+
   return (
     <Link
       to="/admin/qr"

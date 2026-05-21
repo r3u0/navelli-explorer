@@ -46,6 +46,7 @@ export const translations = T({
     es: "Encaramado a 760 metros sobre su altiplano homónimo, Navelli es un laberinto de callejones, arcos y palacios de piedra. En el siglo XIII el monje dominico Fra' Santucci trajo de España los bulbos de Crocus sativus que han hecho famosa esta tierra por su azafrán DOP — el oro rojo de Abruzzo."
   },
   home_cta_tour: { it: "Inizia il tour", en: "Start the tour", fr: "Commencer la visite", de: "Tour starten", es: "Comenzar el recorrido" },
+  start_now: { it: "Inizia ora", en: "Start now", fr: "Commencer", de: "Jetzt starten", es: "Empezar ahora" },
   home_cta_map: { it: "Esplora la mappa", en: "Explore the map", fr: "Explorer la carte", de: "Karte erkunden", es: "Explorar el mapa" },
   home_highlight_history: { it: "Storia millenaria", en: "Millennia of history", fr: "Histoire millénaire", de: "Jahrtausendealte Geschichte", es: "Historia milenaria" },
   home_highlight_history_desc: { it: "Dal tempio romano di Ercole alla chiesa di Santa Maria in Cerulis dell'XI secolo.", en: "From the Roman temple of Hercules to the 11th-century church of Santa Maria in Cerulis.", fr: "Du temple romain d'Hercule à l'église de Santa Maria in Cerulis du XIe siècle.", de: "Vom römischen Tempel des Herkules bis zur Kirche Santa Maria in Cerulis aus dem 11. Jahrhundert.", es: "Del templo romano de Hércules a la iglesia de Santa Maria in Cerulis del siglo XI." },
@@ -174,6 +175,8 @@ export const translations = T({
   cat_nature: { it: "Natura", en: "Nature", fr: "Nature", de: "Natur", es: "Naturaleza" },
   cat_monument: { it: "Monumento", en: "Monument", fr: "Monument", de: "Denkmal", es: "Monumento" },
   cat_historic: { it: "Sito storico", en: "Historic site", fr: "Site historique", de: "Historische Stätte", es: "Sitio histórico" },
+  cat_arte: { it: "Arte", en: "Art", fr: "Art", de: "Kunst", es: "Arte" },
+  cat_piazza: { it: "Piazza", en: "Square", fr: "Place", de: "Platz", es: "Plaza" },
 
   // Map
   map_title: { it: "Mappa interattiva", en: "Interactive map", fr: "Carte interactive", de: "Interaktive Karte", es: "Mapa interactivo" },
@@ -191,6 +194,7 @@ export const translations = T({
   cat_cultural: { it: "Culturale", en: "Cultural", fr: "Culturel", de: "Kulturell", es: "Cultural" },
   cat_music: { it: "Musica", en: "Music", fr: "Musique", de: "Musik", es: "Música" },
   cat_nature_ev: { it: "Natura", en: "Nature", fr: "Nature", de: "Natur", es: "Naturaleza" },
+  cat_arte_ev: { it: "Arte", en: "Art", fr: "Art", de: "Kunst", es: "Arte" },
 
   // Hospitality
   hosp_title: { it: "Dove dormire, mangiare e bere", en: "Where to sleep, eat and drink", fr: "Où dormir, manger et boire", de: "Wo schlafen, essen und trinken", es: "Dónde dormir, comer y beber" },

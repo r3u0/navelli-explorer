@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/i18n/LanguageProvider";
 import saffronImg from "@/assets/saffron.jpg";
 import type { Multilang } from "@/data/translations";
+import { traditions } from "@/data/traditions";
 import { Utensils, Wine, Calendar, Info, ShoppingBag } from "lucide-react";
 
 export const Route = createFileRoute("/food")({
@@ -348,7 +349,55 @@ function FoodPage() {
         ))}
       </div>
 
+      {/* Usanze e tradizioni */}
+      <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
+        {tField({
+          it: "Usanze e tradizioni",
+          en: "Customs and traditions",
+          fr: "Us et traditions",
+          de: "Bräuche und Traditionen",
+          es: "Usos y tradiciones",
+        })}
+      </h2>
+      <p className="text-sm text-muted-foreground max-w-3xl mb-6">
+        {tField({
+          it: "Riti, feste e gesti quotidiani che raccontano l'anima di Navelli. Per aggiungere una nuova usanza, modifica l'array `traditions` in src/data/traditions.ts: ogni scheda accetta 1 o 2 foto.",
+          en: "Rites, festivals and daily gestures that tell the soul of Navelli. To add a new custom, edit the `traditions` array in src/data/traditions.ts: each card accepts 1 or 2 photos.",
+          fr: "Rites, fêtes et gestes quotidiens. Pour ajouter une tradition, modifiez `traditions` dans src/data/traditions.ts.",
+          de: "Riten, Feste und Alltagsgesten. Neue Bräuche in src/data/traditions.ts hinzufügen.",
+          es: "Ritos, fiestas y gestos cotidianos. Para añadir una tradición, edita `traditions` en src/data/traditions.ts.",
+        })}
+      </p>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+        {traditions.map((tr) => (
+          <article key={tr.id} className="stone-card rounded-2xl overflow-hidden flex flex-col">
+            {tr.images && tr.images.length > 0 && (
+              <div className={`grid gap-1 ${tr.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+                {tr.images.slice(0, 2).map((img, i) => (
+                  <div key={i} className="aspect-[4/3] overflow-hidden bg-secondary">
+                    <img src={img} alt={tField(tr.title)} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="p-6 flex flex-col flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">{tr.emoji}</span>
+                {tr.when && (
+                  <span className="text-xs uppercase tracking-widest text-accent font-bold">
+                    {tField(tr.when)}
+                  </span>
+                )}
+              </div>
+              <h3 className="font-display text-xl font-bold mb-2">{tField(tr.title)}</h3>
+              <p className="text-sm text-foreground/85">{tField(tr.description)}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
       {/* Practical tips for tourists */}
+
       <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
         {tField({
           it: "Consigli pratici per il viaggiatore",

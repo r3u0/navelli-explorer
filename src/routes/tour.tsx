@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT } from "@/i18n/LanguageProvider";
 import { stops } from "@/data/stops";
 import { hospitality } from "@/data/hospitality";
 import { LeafletMap } from "@/components/LeafletMap";
 import { StopCard } from "@/components/StopCard";
-import { Clock, Footprints, Car } from "lucide-react";
+import { Clock, Footprints, Car, Play } from "lucide-react";
 
 export const Route = createFileRoute("/tour")({
   component: TourPage,
@@ -40,11 +40,25 @@ function TourPage() {
         </div>
       </div>
 
-      <LeafletMap stops={stops} showRoute showUserLocation bars={hospitality.filter((h) => h.type === "drink" && (h.id === "grottino-borgo" || h.id === "sotto-castagno"))} height="55vh" />
+      <div className="h-[42vh] md:h-[55vh]">
+        <LeafletMap stops={stops} showRoute showUserLocation bars={hospitality.filter((h) => h.type === "drink" && (h.id === "grottino-borgo" || h.id === "sotto-castagno"))} height="100%" />
+      </div>
 
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {stops.map((s) => <StopCard key={s.id} stop={s} />)}
       </div>
+
+      {stops[0] && (
+        <Link
+          to="/stop/$id"
+          params={{ id: stops[0].id }}
+          className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3.5 rounded-full font-semibold shadow-2xl hover:bg-primary/90 transition-colors"
+          aria-label={t("start_now")}
+        >
+          <Play className="w-4 h-4 fill-current" />
+          {t("start_now")}
+        </Link>
+      )}
     </div>
   );
 }

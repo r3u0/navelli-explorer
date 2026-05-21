@@ -29,7 +29,7 @@ function HomePage() {
         <img
           src={heroImg}
           alt="Vista panoramica di Navelli al tramonto con i campi di zafferano in fiore"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-[20%_center] md:object-center"
           width={1920}
           height={1280}
         />

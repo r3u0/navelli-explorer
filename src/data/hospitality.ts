@@ -47,7 +47,7 @@ export const hospitality: Hospitality[] = [
       es: "Una prestigiosa residencia histórica en el corazón del pueblo medieval, con cinco habitaciones y catas de vino y aceite ecológicos.",
     },
     tags: ["B&B", "centro storico", "wine tasting", "romantic"],
-    coordinates: { lat: 42.2384, lng: 13.7294 },
+    coordinates: { lat: 42.236896, lng: 13.728965 },
     priceRange: "$$",
   },
   {
@@ -65,7 +65,7 @@ export const hospitality: Hospitality[] = [
       es: "Alojamiento sencillo pero profundamente característico dentro del Convento de Sant'Antonio del siglo XV.",
     },
     tags: ["hostel", "historic", "convent", "budget", "unique experience"],
-    coordinates: { lat: 42.2165, lng: 13.7235 },
+    coordinates: { lat: 42.245959, lng: 13.710023 },
     priceRange: "$",
   },
   {
@@ -84,7 +84,7 @@ export const hospitality: Hospitality[] = [
       es: "Habitaciones en el corazón del pueblo histórico, bajo los característicos arcos de piedra medievales de Navelli.",
     },
     tags: ["B&B", "archi medievali", "centro storico"],
-    coordinates: { lat: 42.2383, lng: 13.7293 },
+    coordinates: { lat: 42.237258, lng: 13.728814 },
     priceRange: "$$",
   },
   {
@@ -103,7 +103,7 @@ export const hospitality: Hospitality[] = [
       es: "B&B con balcón y vistas panorámicas. A 21 km de la fortaleza de Rocca Calascio.",
     },
     tags: ["B&B", "balcony", "panoramic view", "easy access"],
-    coordinates: { lat: 42.2360, lng: 13.7270 },
+    coordinates: { lat: 42.234678, lng: 13.725140 },
     priceRange: "$$",
   },
   {
@@ -122,7 +122,7 @@ export const hospitality: Hospitality[] = [
       es: "B&B en el centro de Navelli con alquiler de bicicletas gratuito y WiFi gratis.",
     },
     tags: ["B&B", "bikes", "WiFi", "centro storico"],
-    coordinates: { lat: 42.2380, lng: 13.7288 },
+    coordinates: { lat: 42.236614, lng: 13.728712 },
     priceRange: "$$",
   },
   {
@@ -141,7 +141,7 @@ export const hospitality: Hospitality[] = [
       es: "Apartamento vacacional con terraza panorámica sobre el altiplano de Navelli. Habitaciones familiares disponibles.",
     },
     tags: ["holiday apartment", "terrace", "panorama", "families"],
-    coordinates: { lat: 42.2177, lng: 13.7250 },
+    coordinates: { lat: 42.238872, lng: 13.726867 },
     priceRange: "$$",
   },
   
@@ -161,7 +161,7 @@ export const hospitality: Hospitality[] = [
       es: "Apartamento privado con vistas a una calle tranquila en el pueblo. No fumadores.",
     },
     tags: ["holiday apartment", "quiet", "countryside"],
-    coordinates: { lat: 42.2180, lng: 13.7252 },
+    coordinates: { lat: 42.244589, lng: 13.703965 },
     priceRange: "$",
   },
 
@@ -183,7 +183,7 @@ export const hospitality: Hospitality[] = [
       es: "El restaurante tradicional de referencia en el centro histórico de Navelli. Menú que cambia cada día: gnocchetti al azafrán, sopa de garbanzos, arrosticini, cordero.",
     },
     tags: ["traditional", "Abruzzo cuisine", "centro storico", "lunch", "dinner"],
-    coordinates: { lat: 42.2381, lng: 13.7295 },
+    coordinates: { lat: 42.233758, lng: 13.729547 },
     priceRange: "$$",
   },
   {
@@ -201,7 +201,7 @@ export const hospitality: Hospitality[] = [
       es: "Parada informal en la SS17. Excelente relación calidad-precio con platos locales abundantes.",
     },
     tags: ["restaurant", "bar", "state road", "budget", "local cuisine"],
-    coordinates: { lat: 42.2400, lng: 13.7310 },
+    coordinates: { lat: 42.249118, lng: 13.695112 },
     priceRange: "$",
   },
   
@@ -259,7 +259,7 @@ export const hospitality: Hospitality[] = [
       es: "Un refinado wine bar y sala de catas. Vinos ecológicos y aceite de oliva producidos en la finca.",
     },
     tags: ["wine bar", "tasting", "organic wine", "olive oil", "romantic"],
-    coordinates: { lat: 42.2384, lng: 13.7294 },
+    coordinates: { lat: 42.236954, lng: 13.729182 },
     priceRange: "$$",
   },
   {
@@ -277,7 +277,7 @@ export const hospitality: Hospitality[] = [
       es: "Productor artesanal de licores con ingredientes locales: genciana, guindas, regaliz, membrillo. La estrella es el licor de azafrán de Navelli.",
     },
     tags: ["artisan liqueurs", "saffron", "souvenir", "tasting", "local"],
-    coordinates: { lat: 42.2385, lng: 13.7295 },
+    coordinates: { lat: 42.234404, lng: 13.731043 },
     priceRange: "$",
   },
 ];

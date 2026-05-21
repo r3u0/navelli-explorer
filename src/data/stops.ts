@@ -7,7 +7,18 @@
 
 import type { Multilang } from "./translations";
 
-export type StopCategory = "gate" | "church" | "palace" | "nature" | "monument" | "historic";
+// Per aggiungere una nuova tipologia di luogo: aggiungila qui sotto, poi
+// aggiungi l'icona in src/components/CategoryIcon.tsx e l'etichetta tradotta
+// in src/data/translations.ts (chiave `cat_<nome>`).
+export type StopCategory =
+  | "gate"
+  | "church"
+  | "palace"
+  | "nature"
+  | "monument"
+  | "historic"
+  | "arte"
+  | "piazza";
 
 export type StopArea = "Navelli" | "Civitaretenga" | "Cerulis";
 

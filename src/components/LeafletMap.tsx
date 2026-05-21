@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { type Stop, NAVELLI_CENTER } from "@/data/stops";
 import type { Hospitality } from "@/data/hospitality";
+import { type Service, SERVICE_META } from "@/data/services";
 import { useT } from "@/i18n/LanguageProvider";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   showUserLocation?: boolean;
   hospitality?: Hospitality[];
   bars?: Hospitality[]; // sempre visibili, marker teal
+  services?: Service[];
   height?: string;
   focusStopId?: string;
   zoom?: number;
@@ -20,6 +22,7 @@ export function LeafletMap({
   showUserLocation = false,
   hospitality,
   bars,
+  services,
   height = "70vh",
   focusStopId,
   zoom,
@@ -142,6 +145,30 @@ export function LeafletMap({
           );
         });
       }
+      // Essential services (municipio, farmacia, posta, carabinieri, guardia medica)
+      if (services?.length) {
+        services.forEach((sv) => {
+          const meta = SERVICE_META[sv.type];
+          const icon = L.divIcon({
+            className: "",
+            html: `<div class="service-marker" style="background:${meta.color};" title="${meta.label}">${meta.emoji}</div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+          });
+          const m = L.marker([sv.coordinates.lat, sv.coordinates.lng], { icon }).addTo(map!);
+          const phoneHtml = sv.phone
+            ? `<a href="tel:${sv.phone.replace(/\s+/g, "")}" style="color:${meta.color}; font-weight:600; text-decoration:none;">📞 ${sv.phone}</a><br/>`
+            : "";
+          m.bindPopup(`
+            <div style="min-width:200px; font-family:Inter,sans-serif;">
+              <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${meta.color}; font-weight:700;">${meta.label}</div>
+              <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:700; margin:2px 0 6px;">${sv.name}</div>
+              <div style="font-size:12px; color:#555; margin-bottom:6px;">${sv.address}</div>
+              ${phoneHtml}
+            </div>`);
+        });
+      }
+
 
       if (showUserLocation && "geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition((pos) => {
@@ -166,7 +193,7 @@ export function LeafletMap({
       cancelled = true;
       if (map) map.remove();
     };
-  }, [mounted, stops, hospitality, bars, showRoute, showUserLocation, focusStopId, zoom, t, tField]);
+  }, [mounted, stops, hospitality, bars, services, showRoute, showUserLocation, focusStopId, zoom, t, tField]);
 
   return (
     <div
