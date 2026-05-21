@@ -61,7 +61,7 @@ function MapPage() {
 
       <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
         <span className="flex items-center gap-2"><span className="numbered-marker" style={{ width: 22, height: 22, fontSize: 12 }}>1</span> Tappa</span>
-        <span className="flex items-center gap-2"><span className="hospitality-marker sleep" style={{ width: 22, height: 22, fontSize: 12 }}>🛏</span> Dormire</span>
+        <span className="flex items-center gap-2"><span className="hospitality-marker sleep" style={{ width: 22, height: 22, fontSize: 12 }}>🛏️</span> Dormire</span>
         <span className="flex items-center gap-2"><span className="hospitality-marker eat" style={{ width: 22, height: 22, fontSize: 12 }}>🍽</span> Mangiare</span>
         {serviceTypes.map((st) => (
           <span key={st} className="flex items-center gap-2">

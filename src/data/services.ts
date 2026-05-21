@@ -30,6 +30,8 @@ export interface Service {
   name: string;
   address: string;
   phone?: string;
+  /** Breve descrizione opzionale mostrata nel popup della mappa */
+  description?: string;
   coordinates: { lat: number; lng: number };
 }
 
@@ -60,7 +62,7 @@ export const services: Service[] = [
     id: "municipio-navelli",
     type: "municipio",
     name: "Municipio di Navelli",
-    address: "Via del Municipio, Navelli (AQ)",
+    address: "Via Pereto, 2, 67020 Navelli AQ",
     phone: "+39 0862 959132",
     coordinates: { lat: 42.236483, lng: 13.726567 },
   },
@@ -68,7 +70,7 @@ export const services: Service[] = [
     id: "guardia-medica-navelli",
     type: "guardia-medica",
     name: "Guardia Medica",
-    address: "Navelli (AQ)",
+    address: "Via Pereto, 21, 67020 Navelli AQ",
     phone: "+39 0862 959144",
     coordinates: { lat: 42.235808, lng: 13.728873 },
   },
@@ -76,7 +78,7 @@ export const services: Service[] = [
     id: "carabinieri-navelli",
     type: "carabinieri",
     name: "Stazione Carabinieri",
-    address: "Navelli (AQ)",
+    address: "Via del Commercio, 24, 67020 Navelli AQ",
     phone: "112",
     coordinates: { lat: 42.235524, lng: 13.731953 },
   },
@@ -84,7 +86,7 @@ export const services: Service[] = [
     id: "posta-navelli",
     type: "posta",
     name: "Ufficio Postale",
-    address: "Navelli (AQ)",
+    address: "Via Pereto, 15/2, 67020 Navelli AQ",
     phone: "+39 0862 959121",
     coordinates: { lat: 42.236370, lng: 13.726910 },
   },
@@ -92,7 +94,7 @@ export const services: Service[] = [
     id: "farmacia-navelli",
     type: "farmacia",
     name: "Farmacia",
-    address: "Navelli (AQ)",
+    address: "SS17, 1, 67020 Navelli AQ",
     phone: "+39 0862 959150",
     coordinates: { lat: 42.234628, lng: 13.725360 },
   },
@@ -109,7 +111,8 @@ export const services: Service[] = [
     id: "proloco-navelli",
     type: "proloco",
     name: "Pro Loco Navelli",
-    address: "Navelli (AQ)",
+    phone: "+39 0862959158",
+    address: "Via del Municipio, 31, 67020 Navelli AQ",
     coordinates: { lat: 42.236777, lng: 13.730263 },
   },
 
@@ -130,28 +133,63 @@ export const services: Service[] = [
     phone: "+39 347 8767570",
     coordinates: { lat: 42.238203, lng: 13.728321 },
   },
+  
+
+  // ============ NEGOZI / PUNTI VENDITA ============
+  {
+    id: "Virgilio-mini-market",
+    type: "alimentari",
+    name: "Virgilio Mini Market",
+    address: "Via del Commercio, Navelli (AQ)",
+    phone: "+39 0862958405",
+    description: "Orari apertura 09:30–13:54,17:30–19:30. Giovedì chiuso",
+    coordinates: { lat: 42.236191, lng: 13.731631 },
+  },
   {
     id: "bar-rajca-liquori",
-    type: "bar",
+    type: "negozio",
     name: "Rajca Liquori",
     address: "Via del Commercio, Navelli (AQ)",
     phone: "+39 334 6059179",
+    description: "Contattare telefonicamente per orari e disponibilità.",
     coordinates: { lat: 42.234404, lng: 13.731043 },
   },
   {
     id: "bar-cantinarte",
-    type: "bar",
+    type: "negozio",
     name: "CantinArte",
     address: "Via del Municipio 21, Navelli (AQ)",
     phone: "+39 349 6992199",
+    description: "Produzione di olio e vino biologico",
     coordinates: { lat: 42.236954, lng: 13.729182 },
   },
-
-  // ============ NEGOZI / PUNTI VENDITA ============
-  // Aggiungi qui i negozi con type: "negozio" e le coordinate corrette.
-  // Esempio:
-  // { id: "negozio-1", type: "negozio", name: "Nome negozio",
-  //   address: "Via …, Navelli (AQ)", coordinates: { lat: 0, lng: 0 } },
+   {
+    id: "Ceramiche-Casrillo",
+    type: "negozio",
+    name: "Ceramiche Casrillo",
+    address: "Via Spiagge Grandi, 50, 67020 Navelli AQ",
+    phone: "+39 3714744849",
+    description: "laboratorio artigianale dove la tradizione italiana della ceramica prende forma in pezzi unici per uso domestico e ornamentale.",
+    coordinates: { lat: 42.239772, lng: 13.730080 },
+  },
+  {
+    id: "Morena-Miele",
+    type: "negozio",
+    name: "Morena Miele",
+    address: "Via Vicenne, 4, 67020 Navelli AQ",
+    phone: "+39 3663406897",
+    description: "Produttore di miele biologico.",
+    coordinates: { lat: 42.235194, lng: 13.728031 },
+  },
+  {
+    id: "ZUFRAN LIQUORE ZAFFERANO DOP NAVELLI",
+    type: "negozio",
+    name: "Zufran Liquore Zafferano DOP Navelli",
+    address: "SS 17 KM 68, 153, 67020 Navelli AQ",
+    phone: "+39 3452979995",
+    description: "Produttore di liquore allo zafferano biologico. ",
+    coordinates: { lat: 42.234648, lng: 13.725266 },
+  },
 
   // ============ CASETTE DEI LIBRI ============
   // Aggiungi qui le casette di condivisione libri con type: "casetta-libri".

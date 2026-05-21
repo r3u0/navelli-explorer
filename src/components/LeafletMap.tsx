@@ -127,7 +127,7 @@ export function LeafletMap({
       // Optional hospitality layer (sleep / eat)
       if (hospitality?.length) {
         hospitality.forEach((h) => {
-          const emoji = h.type === "sleep" ? "🛏" : h.type === "eat" ? "🍽" : "🍺";
+          const emoji = h.type === "sleep" ? "🛏️" : h.type === "eat" ? "🍽" : "🍺";
           const cls = h.type === "sleep" ? "sleep" : "eat";
           const icon = L.divIcon({
             className: "",
@@ -159,12 +159,16 @@ export function LeafletMap({
           const phoneHtml = sv.phone
             ? `<a href="tel:${sv.phone.replace(/\s+/g, "")}" style="color:${meta.color}; font-weight:600; text-decoration:none;">📞 ${sv.phone}</a><br/>`
             : "";
+          const descHtml = sv.description
+            ? `<div style="font-size:12px; color:#444; margin-top:6px;">${sv.description}</div>`
+            : "";
           m.bindPopup(`
             <div style="min-width:200px; font-family:Inter,sans-serif;">
               <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${meta.color}; font-weight:700;">${meta.label}</div>
               <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:700; margin:2px 0 6px;">${sv.name}</div>
               <div style="font-size:12px; color:#555; margin-bottom:6px;">${sv.address}</div>
               ${phoneHtml}
+              ${descHtml}
             </div>`);
         });
       }
