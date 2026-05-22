@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/i18n/LanguageProvider";
 import saffronImg from "@/assets/saffron.jpg";
 import type { Multilang } from "@/data/translations";
-import { traditions } from "@/data/traditions";
+import { traditions, type Tradition } from "@/data/traditions";
 import { Utensils, Wine, Calendar, Info, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+
 
 export const Route = createFileRoute("/food")({
   component: FoodPage,
@@ -19,15 +22,16 @@ export const Route = createFileRoute("/food")({
   }),
 });
 
-interface Dish {
+export interface Dish {
   emoji: string;
   name: string;
   desc: Multilang;
-  where: Multilang;
-  when: Multilang;
+  // Optional: omit the field entirely to hide the corresponding line + icon.
+  where?: Multilang;
+  when?: Multilang;
 }
 
-const dishes: Dish[] = [
+export const dishes: Dish[] = [
   {
     emoji: "🌺",
     name: "Zafferano DOP dell'Aquila",
@@ -80,27 +84,13 @@ const dishes: Dish[] = [
   },
   {
     emoji: "🍝",
-    name: "Gnocchetti allo zafferano",
+    name: "Sagne con ceci e zafferano",
     desc: {
-      it: "Pasta fresca all'uovo lavorata con i pollici, condita con un battuto di guanciale, cipolla e pistilli di zafferano. Piatto della domenica e delle ricorrenze.",
-      en: "Hand-shaped fresh egg pasta tossed with guanciale, onion and saffron threads. The classic Sunday and feast-day dish.",
-      fr: "Pâtes fraîches aux œufs façonnées au pouce, sautées avec guanciale, oignon et safran.",
-      de: "Frische Eierpasta mit Guanciale, Zwiebel und Safran.",
-      es: "Pasta fresca al huevo con guanciale, cebolla y azafrán.",
-    },
-    where: {
-      it: "Tipica delle trattorie e agriturismi dell'altopiano.",
-      en: "Typical of the plateau's trattorias and agriturismi.",
-      fr: "Typique des trattorias et agritourismes du plateau.",
-      de: "Typisch für die Trattorien und Agriturismi der Hochebene.",
-      es: "Típicos de trattorias y agroturismos del altiplano.",
-    },
-    when: {
-      it: "Tutto l'anno.",
-      en: "Year-round.",
-      fr: "Toute l'année.",
-      de: "Ganzjährig.",
-      es: "Todo el año.",
+      it: "Pasta fresca all'uovo lavorata a mano, condita con soffritto di cipolla, battuto di guanciale, ceci di navelli e pistilli di zafferano. Piatto della domenica e delle ricorrenze.",
+      en: "Fresh egg pasta handmade and dressed with sautéed onion, guanciale, Navelli chickpeas and saffron threads. A Sunday and special-occasion dish.",
+      fr: "Pâtes fraîches aux œufs faites à la main, servies avec oignon sauté, guanciale, pois chiches de Navelli et filaments de safran. Plat du dimanche et des occasions spéciales.",
+      de: "Frische Eiernudeln, von Hand gefertigt, mit sautierten Zwiebeln, Guanciale, Navelli-Kichererbsen und Safranfäden serviert. Ein Sonntags- und Festtagsgericht.",
+      es: "Pasta fresca hecha a mano con huevo, condimentada con cebolla salteada, guanciale, garbanzos de Navelli y hebras de azafrán. Plato para domingos y ocasiones especiales.",
     },
   },
   {
@@ -129,7 +119,7 @@ const dishes: Dish[] = [
     },
   },
   {
-    emoji: "🍷",
+    emoji: "🥃",
     name: "Liquore allo zafferano",
     desc: {
       it: "Distillato artigianale ambrato a base di alcol, zucchero e pistilli di zafferano in infusione. Profumo balsamico, gusto rotondo: si beve fresco a fine pasto.",
@@ -151,31 +141,6 @@ const dishes: Dish[] = [
       fr: "Toute l'année.",
       de: "Ganzjährig.",
       es: "Todo el año.",
-    },
-  },
-  {
-    emoji: "🍢",
-    name: "Arrosticini",
-    desc: {
-      it: "Piccoli spiedini di pecora castrata, tagliati a cubetti regolari e cotti sulla 'fornacella' a carbonella. Si mangiano a mazzi, tirando la carne con i denti, accompagnati da pane abbrustolito con olio e vino rosso.",
-      en: "Small mutton skewers, evenly cubed and grilled on the 'fornacella' charcoal brazier. Eaten in bundles, pulled straight off the stick, with grilled bread, olive oil and red wine.",
-      fr: "Brochettes de mouton grillées sur la 'fornacella'. À manger en botte avec pain grillé et vin rouge.",
-      de: "Kleine Hammelfleischspieße, auf der 'Fornacella' gegrillt. In Bündeln gegessen, mit geröstetem Brot und Rotwein.",
-      es: "Brochetas pequeñas de cordero a la brasa sobre 'fornacella'. Se comen en manojos con pan tostado y vino tinto.",
-    },
-    where: {
-      it: "Rosticcerie e trattorie di Navelli, Civitaretenga e dintorni.",
-      en: "Rosticcerie and trattorias in Navelli, Civitaretenga and around.",
-      fr: "Rôtisseries et trattorias de la région.",
-      de: "Rosticcerien und Trattorien in Navelli und Umgebung.",
-      es: "Asadores y trattorias de la zona.",
-    },
-    when: {
-      it: "Tutto l'anno, soprattutto in estate.",
-      en: "Year-round, especially in summer.",
-      fr: "Toute l'année, surtout en été.",
-      de: "Ganzjährig, besonders im Sommer.",
-      es: "Todo el año, sobre todo en verano.",
     },
   },
 ];
@@ -273,8 +238,14 @@ const tips: { titleKey: string; title: Multilang; desc: Multilang; icon: typeof 
   },
 ];
 
+type OpenItem =
+  | { kind: "dish"; data: Dish }
+  | { kind: "tradition"; data: Tradition }
+  | null;
+
 function FoodPage() {
   const { t, tField, lang } = useT();
+  const [open, setOpen] = useState<OpenItem>(null);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
@@ -291,86 +262,62 @@ function FoodPage() {
       {/* Story block */}
       <section className="stone-card rounded-3xl p-7 md:p-10 mb-14">
         <span className="text-xs uppercase tracking-widest text-accent font-bold">
-          {tField({
-            it: "La storia",
-            en: "The story",
-            fr: "L'histoire",
-            de: "Die Geschichte",
-            es: "La historia",
-          })}
+          {tField({ it: "La storia", en: "The story", fr: "L'histoire", de: "Die Geschichte", es: "La historia" })}
         </span>
         <h2 className="font-display text-2xl md:text-3xl font-bold mt-2 mb-4">
-          {tField({
-            it: "Otto secoli di Oro Rosso",
-            en: "Eight centuries of Red Gold",
-            fr: "Huit siècles d'Or Rouge",
-            de: "Acht Jahrhunderte Rotes Gold",
-            es: "Ocho siglos de Oro Rojo",
-          })}
+          {tField({ it: "Otto secoli di Oro Rosso", en: "Eight centuries of Red Gold", fr: "Huit siècles d'Or Rouge", de: "Acht Jahrhunderte Rotes Gold", es: "Ocho siglos de Oro Rojo" })}
         </h2>
         <p className="text-foreground/90 leading-relaxed">
           {tField({
             it: "Nel XIII secolo il monaco domenicano Fra' Santucci portò dalla Spagna i bulbi di Crocus sativus e li piantò sull'altopiano di Navelli. Il clima secco, l'escursione termica e il terreno calcareo si rivelarono perfetti: i pistilli che ne nascono sono tra i più aromatici al mondo. Da allora le stesse famiglie coltivano lo zafferano con metodi rimasti immutati: aratura a mano, raccolta all'alba, separazione dei pistilli a tavola e tostatura su braci di mandorlo. Il marchio DOP «Zafferano dell'Aquila» (dal 2005) tutela oggi questa filiera cortissima — dal campo al barattolo, tutto avviene entro pochi chilometri.",
             en: "In the 13th century the Dominican friar Fra' Santucci brought Crocus sativus bulbs from Spain and planted them on the Navelli plateau. The dry climate, large temperature range and limestone soil were perfect: the resulting threads are among the most aromatic in the world. Since then the same families have grown saffron with unchanged methods — hand ploughing, harvest at dawn, manual stigma separation and toasting over almond-wood embers. The DOP mark «Zafferano dell'Aquila» (since 2005) protects this very short supply chain — field to jar, all within a few kilometres.",
-            fr: "Au XIIIe siècle, le moine dominicain Fra' Santucci rapporta d'Espagne les bulbes de Crocus sativus et les planta sur le plateau de Navelli. Climat sec, amplitude thermique et sol calcaire ont fait le reste : les pistils figurent parmi les plus aromatiques au monde. La marque DOP « Zafferano dell'Aquila » (depuis 2005) protège cette filière très courte.",
-            de: "Im 13. Jahrhundert brachte der Dominikanermönch Fra' Santucci Crocus-sativus-Knollen aus Spanien und pflanzte sie auf der Navelli-Hochebene. Trockenes Klima, starke Temperaturschwankungen und kalkhaltiger Boden waren ideal: die Narben gehören zu den aromatischsten der Welt. Das DOP-Siegel «Zafferano dell'Aquila» (seit 2005) schützt diese sehr kurze Wertschöpfungskette.",
-            es: "En el siglo XIII el fraile dominico Fra' Santucci trajo de España bulbos de Crocus sativus y los plantó en el altiplano de Navelli. El clima seco, la amplitud térmica y el suelo calcáreo resultaron perfectos. La marca DOP «Zafferano dell'Aquila» (desde 2005) protege esta cadena cortísima.",
+            fr: "Au XIIIe siècle, le moine dominicain Fra' Santucci rapporta d'Espagne les bulbes de Crocus sativus.",
+            de: "Im 13. Jahrhundert brachte der Dominikanermönch Fra' Santucci Crocus-sativus-Knollen aus Spanien.",
+            es: "En el siglo XIII el fraile dominico Fra' Santucci trajo de España bulbos de Crocus sativus.",
           })}
         </p>
       </section>
 
-      {/* Dishes grid with extended info */}
+      {/* Dishes grid — clickable */}
       <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
-        {tField({
-          it: "I piatti e i prodotti tipici",
-          en: "Typical dishes and products",
-          fr: "Plats et produits typiques",
-          de: "Typische Gerichte und Produkte",
-          es: "Platos y productos típicos",
-        })}
+        {tField({ it: "I piatti e i prodotti tipici", en: "Typical dishes and products", fr: "Plats et produits typiques", de: "Typische Gerichte und Produkte", es: "Platos y productos típicos" })}
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
         {dishes.map((d) => (
-          <article key={d.name} className="stone-card rounded-2xl p-6 flex flex-col">
+          <button
+            key={d.name}
+            type="button"
+            onClick={() => setOpen({ kind: "dish", data: d })}
+            className="stone-card rounded-2xl p-6 flex flex-col text-left cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
             <div className="text-4xl mb-3">{d.emoji}</div>
             <h3 className="font-display text-xl font-bold mb-2">{d.name}</h3>
-            <p className="text-sm text-foreground/85 mb-4">{d.desc[lang] || d.desc.it}</p>
-            <div className="mt-auto space-y-2 pt-3 border-t border-border text-xs text-muted-foreground">
-              <p className="flex items-start gap-1.5">
-                <Utensils className="w-3.5 h-3.5 mt-0.5 text-primary shrink-0" />
-                <span>{d.where[lang] || d.where.it}</span>
-              </p>
-              <p className="flex items-start gap-1.5">
-                <Calendar className="w-3.5 h-3.5 mt-0.5 text-primary shrink-0" />
-                <span>{d.when[lang] || d.when.it}</span>
-              </p>
-            </div>
-          </article>
+            <p className="text-sm text-foreground/85 line-clamp-3">{d.desc[lang] || d.desc.it}</p>
+          </button>
         ))}
       </div>
 
-      {/* Usanze e tradizioni */}
+      {/* Usanze e tradizioni — clickable */}
       <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
-        {tField({
-          it: "Usanze e tradizioni",
-          en: "Customs and traditions",
-          fr: "Us et traditions",
-          de: "Bräuche und Traditionen",
-          es: "Usos y tradiciones",
-        })}
+        {tField({ it: "Usanze e tradizioni", en: "Customs and traditions", fr: "Us et traditions", de: "Bräuche und Traditionen", es: "Usos y tradiciones" })}
       </h2>
       <p className="text-sm text-muted-foreground max-w-3xl mb-6">
         {tField({
-          it: "Riti, feste e gesti quotidiani che raccontano l'anima di Navelli. Per aggiungere una nuova usanza, modifica l'array `traditions` in src/data/traditions.ts: ogni scheda accetta 1 o 2 foto.",
-          en: "Rites, festivals and daily gestures that tell the soul of Navelli. To add a new custom, edit the `traditions` array in src/data/traditions.ts: each card accepts 1 or 2 photos.",
-          fr: "Rites, fêtes et gestes quotidiens. Pour ajouter une tradition, modifiez `traditions` dans src/data/traditions.ts.",
-          de: "Riten, Feste und Alltagsgesten. Neue Bräuche in src/data/traditions.ts hinzufügen.",
-          es: "Ritos, fiestas y gestos cotidianos. Para añadir una tradición, edita `traditions` en src/data/traditions.ts.",
+          it: "Riti, feste e gesti quotidiani che raccontano l'anima di Navelli. Clicca una scheda per leggere tutto.",
+          en: "Rites, festivals and daily gestures. Click a card to read more.",
+          fr: "Rites, fêtes et gestes. Cliquez sur une carte pour lire plus.",
+          de: "Riten, Feste und Alltagsgesten. Karte anklicken.",
+          es: "Ritos, fiestas y gestos. Haz clic en una tarjeta.",
         })}
       </p>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14 items-start">
         {traditions.map((tr) => (
-          <article key={tr.id} className="stone-card rounded-2xl overflow-hidden flex flex-col">
+          <button
+            key={tr.id}
+            type="button"
+            onClick={() => setOpen({ kind: "tradition", data: tr })}
+            className="stone-card rounded-2xl overflow-hidden flex flex-col text-left cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
             {tr.images && tr.images.length > 0 && (
               <div className={`grid gap-1 ${tr.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
                 {tr.images.slice(0, 2).map((img, i) => (
@@ -384,28 +331,19 @@ function FoodPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-2xl">{tr.emoji}</span>
                 {tr.when && (
-                  <span className="text-xs uppercase tracking-widest text-accent font-bold">
-                    {tField(tr.when)}
-                  </span>
+                  <span className="text-xs uppercase tracking-widest text-accent font-bold">{tField(tr.when)}</span>
                 )}
               </div>
               <h3 className="font-display text-xl font-bold mb-2">{tField(tr.title)}</h3>
-              <p className="text-sm text-foreground/85">{tField(tr.description)}</p>
+              <p className="text-sm text-foreground/85 line-clamp-3">{tField(tr.description)}</p>
             </div>
-          </article>
+          </button>
         ))}
       </div>
 
-      {/* Practical tips for tourists */}
-
+      {/* Practical tips */}
       <h2 className="font-display text-2xl md:text-3xl font-bold mb-5">
-        {tField({
-          it: "Consigli pratici per il viaggiatore",
-          en: "Practical tips for travellers",
-          fr: "Conseils pratiques pour les voyageurs",
-          de: "Praktische Tipps für Reisende",
-          es: "Consejos prácticos para viajeros",
-        })}
+        {tField({ it: "Consigli pratici per il viaggiatore", en: "Practical tips for travellers", fr: "Conseils pratiques", de: "Praktische Tipps", es: "Consejos prácticos" })}
       </h2>
       <div className="grid sm:grid-cols-2 gap-5 mb-12">
         {tips.map((tip) => (
@@ -430,6 +368,66 @@ function FoodPage() {
           es: "Para degustarlos y alojarte, visita la página Hospedaje.",
         })}
       </p>
+
+      {/* Popup */}
+      <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+          {open?.kind === "dish" && (
+            <>
+              <DialogHeader>
+                <div className="text-5xl mb-2">{open.data.emoji}</div>
+                <DialogTitle className="font-display text-2xl md:text-3xl">{open.data.name}</DialogTitle>
+              </DialogHeader>
+              <DialogDescription asChild>
+                <div className="space-y-4 text-foreground">
+                  <p className="text-base leading-relaxed">{open.data.desc[lang] || open.data.desc.it}</p>
+                  {(open.data.where || open.data.when) && (
+                    <div className="space-y-2 pt-3 border-t border-border text-sm text-muted-foreground">
+                      {open.data.where && (
+                        <p className="flex items-start gap-2">
+                          <Utensils className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                          <span>{open.data.where[lang] || open.data.where.it}</span>
+                        </p>
+                      )}
+                      {open.data.when && (
+                        <p className="flex items-start gap-2">
+                          <Calendar className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                          <span>{open.data.when[lang] || open.data.when.it}</span>
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </DialogDescription>
+            </>
+          )}
+          {open?.kind === "tradition" && (
+            <>
+              {open.data.images && open.data.images.length > 0 && (
+                <div className={`grid gap-1 -mx-6 -mt-6 mb-2 ${open.data.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+                  {open.data.images.slice(0, 2).map((img, i) => (
+                    <div key={i} className="aspect-[4/3] overflow-hidden bg-secondary">
+                      <img src={img} alt={tField(open.data.title)} className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              )}
+              <DialogHeader>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-3xl">{open.data.emoji}</span>
+                  {open.data.when && (
+                    <span className="text-xs uppercase tracking-widest text-accent font-bold">{tField(open.data.when)}</span>
+                  )}
+                </div>
+                <DialogTitle className="font-display text-2xl md:text-3xl">{tField(open.data.title)}</DialogTitle>
+              </DialogHeader>
+              <DialogDescription asChild>
+                <p className="text-base leading-relaxed whitespace-pre-line text-foreground">{tField(open.data.description)}</p>
+              </DialogDescription>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

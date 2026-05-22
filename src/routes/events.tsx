@@ -99,21 +99,28 @@ function EventsPage() {
 
   function EventCard({ e, fmt }: { e: typeof events[number]; fmt: (d: string, end?: string) => string }) {
     return (
-      <article className="stone-card rounded-2xl p-6">
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <span className="text-3xl">{catEmoji[e.category]}</span>
-          <span className="text-xs px-2.5 py-1 rounded-full bg-accent/20 text-accent-foreground font-semibold">
-            {catLabel(e.category)}
-          </span>
+      <article className="stone-card rounded-2xl overflow-hidden flex flex-col">
+        {e.image && (
+          <div className="aspect-[16/9] overflow-hidden bg-secondary">
+            <img src={e.image} alt={tField(e.name)} loading="lazy" className="w-full h-full object-cover" />
+          </div>
+        )}
+        <div className="p-6">
+          <div className="flex items-start justify-between gap-3 mb-2">
+            <span className="text-3xl">{catEmoji[e.category]}</span>
+            <span className="text-xs px-2.5 py-1 rounded-full bg-accent/20 text-accent-foreground font-semibold">
+              {catLabel(e.category)}
+            </span>
+          </div>
+          <h3 className="font-display text-xl font-bold mb-2">{tField(e.name)}</h3>
+          <p className="flex items-center gap-1.5 text-sm text-muted-foreground mb-1">
+            <Calendar className="w-4 h-4" /> {fmt(e.date, e.endDate)}
+          </p>
+          <p className="flex items-center gap-1.5 text-sm text-muted-foreground mb-3">
+            <MapPin className="w-4 h-4" /> {e.location}
+          </p>
+          <p className="text-sm">{tField(e.description)}</p>
         </div>
-        <h3 className="font-display text-xl font-bold mb-2">{tField(e.name)}</h3>
-        <p className="flex items-center gap-1.5 text-sm text-muted-foreground mb-1">
-          <Calendar className="w-4 h-4" /> {fmt(e.date, e.endDate)}
-        </p>
-        <p className="flex items-center gap-1.5 text-sm text-muted-foreground mb-3">
-          <MapPin className="w-4 h-4" /> {e.location}
-        </p>
-        <p className="text-sm">{tField(e.description)}</p>
       </article>
     );
   }

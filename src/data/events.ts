@@ -21,6 +21,14 @@ export interface NavelliEvent {
   location: string;
   description: Multilang;
   category: EventCategory;
+  /**
+   * Immagine opzionale dell'evento.
+   * Può essere:
+   *  - URL esterna: "https://..."
+   *  - file caricato in public/images/events/...   → "/images/events/foo.jpg"
+   * Lascia non definito per non mostrare alcuna immagine.
+   */
+  image?: string;
 }
 
 const year = new Date().getFullYear();

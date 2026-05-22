@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useT } from "@/i18n/LanguageProvider";
 import heroImg from "@/assets/navelli-hero.jpg";
 import saffronImg from "@/assets/saffron.jpg";
+import saffron1 from "@/assets/saffron1.jpg";
+import { traditions } from "@/data/traditions";
+import type { Multilang } from "@/data/translations";
 import { Map, MapPin, ArrowRight, Sparkles, ChevronDown, ExternalLink, Building2, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -112,30 +115,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Saffron CTA */}
+      {/* Food & Traditions Slideshow */}
       <section className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="grid md:grid-cols-2 gap-8 items-center stone-card rounded-3xl overflow-hidden">
-          <img
-            src={saffronImg}
-            alt="Fiori di Crocus sativus, lo zafferano di Navelli"
-            className="w-full h-72 md:h-full object-cover"
-            loading="lazy"
-            width={1600}
-            height={1000}
-          />
-          <div className="p-8 md:p-10">
-            <span className="text-xs uppercase tracking-widest text-accent font-bold">Zafferano DOP</span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-4">L'Oro Rosso d'Abruzzo</h2>
-            <p className="text-muted-foreground mb-6">{t("home_highlight_saffron_desc")}</p>
-            <Link
-              to="/food"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-            >
-              {t("nav_food")} <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
+        <FoodTraditionsSlideshow />
       </section>
+
 
       {/* Quick access */}
       <section className="max-w-7xl mx-auto px-4 pb-24">
@@ -213,5 +197,103 @@ function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+function FoodTraditionsSlideshow() {
+  const { t, tField } = useT();
+
+  const images = useMemo<string[]>(() => {
+    // 1. Prende le foto da traditions (se ce ne sono)
+    const fromTraditions = traditions.flatMap((tr) => tr.images ?? []);
+    
+    // 2. Unisce le foto di traditions, la foto di default e le tue nuove foto in asset (da importare a inizio file prima)
+    const all = [...fromTraditions, saffronImg, saffron1];
+    
+    return all.length > 0 ? all : [saffronImg];
+  }, []);
+
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const id = setInterval(() => setIdx((i) => (i + 1) % images.length), 4500);
+    return () => clearInterval(id);
+  }, [images.length]);
+
+  const title = tField({
+    it: "Cibo, usanze e tradizioni",
+    en: "Food, customs and traditions",
+    fr: "Cuisine, coutumes et traditions",
+    de: "Essen, Bräuche und Traditionen",
+    es: "Comida, costumbres y tradiciones",
+  } as Multilang);
+
+  const desc = tField({
+    it: "Dallo zafferano DOP ai piatti della cucina contadina, fino alle feste che animano il borgo: scopri i sapori autentici e le usanze che da secoli raccontano l'anima di Navelli.",
+    en: "From DOP saffron to traditional country dishes, and the festivals that bring the village to life: discover the authentic flavours and customs that have told Navelli's story for centuries.",
+    fr: "Du safran DOP aux plats de la cuisine paysanne, jusqu'aux fêtes qui animent le village : découvrez les saveurs authentiques et les coutumes qui racontent l'âme de Navelli depuis des siècles.",
+    de: "Vom DOP-Safran über die Gerichte der Bauernküche bis zu den Festen, die das Dorf beleben: Entdecken Sie die authentischen Aromen und Bräuche, die seit Jahrhunderten die Seele von Navelli erzählen.",
+    es: "Del azafrán DOP a los platos de la cocina campesina, hasta las fiestas que animan el pueblo: descubre los sabores auténticos y las costumbres que cuentan desde hace siglos el alma de Navelli.",
+  } as Multilang);
+
+  const cta = tField({
+    it: "Scopri di più",
+    en: "Discover more",
+    fr: "En savoir plus",
+    de: "Mehr erfahren",
+    es: "Saber más",
+  } as Multilang);
+
+  return (
+    <div className="relative stone-card rounded-3xl overflow-hidden min-h-[280px] md:min-h-[340px] grid md:grid-cols-2">
+      {/* Left: rotating photos */}
+      <div className="relative bg-gradient-to-br from-primary/15 via-accent/10 to-secondary min-h-[240px]">
+        {images.map((src, i) => (
+          <img
+            key={`${src}-${i}`}
+            src={src}
+            alt={title}
+            loading="lazy"
+            aria-hidden={i !== idx}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-out ${
+              i === idx ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Slide ${i + 1}`}
+                onClick={() => setIdx(i)}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === idx ? "w-6 bg-white" : "w-1.5 bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Right: fixed text + CTA */}
+      <div className="p-8 md:p-10 flex flex-col justify-center">
+        <span className="text-xs uppercase tracking-widest text-accent font-bold">
+          {t("nav_food")}
+        </span>
+        <h2 className="font-display text-2xl md:text-4xl font-bold mt-2 mb-4">
+          {title}
+        </h2>
+        <p className="text-muted-foreground mb-6">{desc}</p>
+        <Link
+          to="/food"
+          className="inline-flex items-center gap-2 self-start bg-primary text-primary-foreground px-5 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors shadow-md"
+        >
+          {cta} <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </div>
   );
 }
